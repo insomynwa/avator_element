@@ -237,12 +237,12 @@ class Admin extends App {
 
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-		// add_action( 'admin_menu', [ $this, 'remove_go_pro_menu' ], 0 );
+		add_action( 'admin_menu', [ $this, 'remove_go_pro_menu' ], 0 );
 
 		// add_action( 'elementor/admin/after_create_settings/' . Tools::PAGE_ID, [ $this, 'register_admin_tools_fields' ], 50 );
 
 		// add_filter( 'plugin_action_links_' . ELEMENTOR_PLUGIN_BASE, [ $this, 'plugin_action_links' ], 50 );
-		add_filter( 'plugin_row_meta', [ $this, 'plugin_row_meta' ], 10, 2 );
+		// add_filter( 'plugin_row_meta', [ $this, 'plugin_row_meta' ], 10, 2 );
 
 		add_filter( 'elementor/finder/categories', [ $this, 'add_finder_items' ] );
 

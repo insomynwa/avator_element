@@ -548,7 +548,7 @@ class Admin {
 	}
 
 	public function __construct() {
-		add_action( 'admin_menu', [ $this, 'register_page' ], 800 );
+		// add_action( 'admin_menu', [ $this, 'register_page' ], 800 );
 		add_action( 'admin_post_avator_element_activate_license', [ $this, 'action_activate_license' ] );
 		add_action( 'admin_post_avator_element_deactivate_license', [ $this, 'action_deactivate_license' ] );
 
@@ -559,7 +559,7 @@ class Admin {
 
 		add_filter( 'elementor/finder/categories', [ $this, 'add_finder_item' ] );
 
-		add_filter( 'plugin_action_links_' . AVATOR_ELEMENT_PLUGIN_BASE, [ $this, 'plugin_action_links' ], 50 );
+		// add_filter( 'plugin_action_links_' . AVATOR_ELEMENT_PLUGIN_BASE, [ $this, 'plugin_action_links' ], 50 );
 
 		add_action( 'admin_init', [ $this, 'handle_tracker_actions' ], 9 );
 

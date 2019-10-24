@@ -2,10 +2,8 @@
 /**
  * Plugin Name: Avator Element
  * Description: Elementor add-on plugin
- * Plugin URI: -
  * Author: Mr.Lorem
  * Version: 2.7.2
- * Author URI: -
  *
  * Text Domain: avator-element
  */

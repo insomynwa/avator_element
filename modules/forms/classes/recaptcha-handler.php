@@ -15,11 +15,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Recaptcha_Handler {
 
-	const OPTION_NAME_SITE_KEY = 'avator_element_recaptcha_site_key';
+	const OPTION_NAME_SITE_KEY = 'elementor_pro_recaptcha_site_key';
 
-	const OPTION_NAME_SECRET_KEY = 'avator_element_recaptcha_secret_key';
+	const OPTION_NAME_SECRET_KEY = 'elementor_pro_recaptcha_secret_key';
 
-	const OPTION_NAME_RECAPTCHA_THRESHOLD = 'avator_element_recaptcha_threshold';
+	const OPTION_NAME_RECAPTCHA_THRESHOLD = 'elementor_pro_recaptcha_threshold';
 
 	const V2_CHECKBOX = 'v2_checkbox';
 
