@@ -288,6 +288,17 @@ class Plugin {
 		$document->update_meta( '_avator_element_version', AVATOR_ELEMENT_VERSION );
 	}
 
+	public function add_elementor_widget_categories( $elements_manager ) {
+
+		$elements_manager->add_category(
+			'avator-elements',
+			[
+				'title' => __( 'Avator', 'avator-element' ),
+				'icon' => 'fa fa-plug',
+			]
+		);
+	}
+
 	private function get_responsive_templates_path() {
 		return AVATOR_ELEMENT_ASSETS_PATH . 'css/templates/';
 	}
@@ -302,6 +313,8 @@ class Plugin {
 
 		add_filter( 'elementor/core/responsive/get_stylesheet_templates', [ $this, 'get_responsive_stylesheet_templates' ] );
 		add_action( 'elementor/document/save_version', [ $this, 'on_document_save_version' ] );
+
+		add_action( 'elementor/elements/categories_registered', [ $this, 'add_elementor_widget_categories' ] );
 	}
 
 	/**
