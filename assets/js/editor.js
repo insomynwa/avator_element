@@ -547,7 +547,7 @@ var AvatorElement = Marionette.Application.extend({
 	},
 
 	onStart: function onStart() {
-		this.config = elementorProEditorConfig;
+		this.config = elementorAvatorEditorConfig;
 
 		this.initModules();
 
@@ -718,7 +718,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-if (!elementorProEditorConfig.useComponentsRouter) {
+if (!elementorAvatorEditorConfig.useComponentsRouter) {
 	module.exports = __webpack_require__(18);
 } else {
 	var DisplaySettingsControlsStack = __webpack_require__(4);
@@ -2598,7 +2598,7 @@ module.exports = function () {
 "use strict";
 
 
-if (!elementorProEditorConfig.useComponentsRouter) {
+if (!elementorAvatorEditorConfig.useComponentsRouter) {
 	module.exports = __webpack_require__(40);
 } else {
 	module.exports = elementorModules.editor.utils.Module.extend({
@@ -3930,7 +3930,7 @@ module.exports = function () {
 "use strict";
 
 
-if (!elementorProEditorConfig.useComponentsRouter) {
+if (!elementorAvatorEditorConfig.useComponentsRouter) {
 	module.exports = __webpack_require__(58);
 } else {
 	var Component = __webpack_require__(64);

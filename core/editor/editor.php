@@ -23,7 +23,7 @@ class Editor extends App {
 	 *
 	 */
 	public function get_name() {
-		return 'pro-editor';
+		return 'avator-editor';
 	}
 
 	public function __construct() {
