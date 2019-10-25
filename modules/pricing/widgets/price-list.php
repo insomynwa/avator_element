@@ -28,7 +28,7 @@ class Price_List extends Base_Widget {
 	}
 
 	public function get_categories() {
-		return [ 'pro-elements' ];
+		return [ 'avator-elements' ];
 	}
 
 	public function get_keywords() {

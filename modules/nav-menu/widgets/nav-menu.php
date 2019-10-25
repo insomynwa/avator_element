@@ -32,7 +32,7 @@ class Nav_Menu extends Widget_Base {
 	}
 
 	public function get_categories() {
-		return [ 'pro-elements', 'theme-elements' ];
+		return [ 'avator-elements', 'theme-elements' ];
 	}
 
 	public function get_keywords() {

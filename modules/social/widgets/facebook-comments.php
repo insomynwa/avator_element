@@ -25,7 +25,7 @@ class Facebook_Comments extends Widget_Base {
 	}
 
 	public function get_categories() {
-		return [ 'pro-elements' ];
+		return [ 'avator-elements' ];
 	}
 
 	public function get_keywords() {

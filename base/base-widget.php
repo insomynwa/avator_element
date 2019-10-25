@@ -10,6 +10,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 abstract class Base_Widget extends Widget_Base {
 
 	public function get_categories() {
-		return [ 'pro-elements' ];
+		return [ 'avator-elements' ];
 	}
 }
