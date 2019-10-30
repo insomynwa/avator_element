@@ -19,8 +19,8 @@ class Updater {
 		$this->plugin_slug = basename( AVATOR_ELEMENT__FILE__, '.php' );
 		$this->response_transient_key = md5( sanitize_key( $this->plugin_name ) . 'response_transient' );
 
-		$this->setup_hooks();
-		$this->maybe_delete_transients();
+		// $this->setup_hooks();
+		// $this->maybe_delete_transients();
 	}
 
 	private function setup_hooks() {
