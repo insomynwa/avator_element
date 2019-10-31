@@ -1,4 +1,4 @@
-/*! avator-element - v2.7.2 - 06-10-2019 */
+/*! avator-element - v2.7.3 - 06-10-2019 */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};

@@ -1,4 +1,4 @@
-/*! avator-element - v2.7.2 - 06-10-2019 */
+/*! avator-element - v2.7.3 - 06-10-2019 */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -641,7 +641,11 @@ module.exports = elementorModules.frontend.handlers.Base.extend({
 	},
 
 	onInit: function onInit() {
+		var _this = this;
+
 		elementorModules.frontend.handlers.Base.prototype.onInit.apply(this, arguments);
+
+		var elementSettings = this.getElementSettings();
 
 		this.swipers = {};
 
@@ -650,6 +654,17 @@ module.exports = elementorModules.frontend.handlers.Base.extend({
 		}
 
 		this.swipers.main = new Swiper(this.elements.$mainSwiper, this.getSwiperOptions());
+
+		if (elementSettings.pause_on_hover) {
+			this.elements.$mainSwiper.on({
+				mouseenter: function mouseenter() {
+					_this.swipers.main.autoplay.stop();
+				},
+				mouseleave: function mouseleave() {
+					_this.swipers.main.autoplay.start();
+				}
+			});
+		}
 	},
 
 	onElementChange: function onElementChange(propertyName) {
@@ -1118,7 +1133,7 @@ var _class = function (_elementorModules$Vie) {
 		value: function runLinkAction(event) {
 			event.preventDefault();
 
-			this.runAction(event.currentTarget.href, event);
+			this.runAction(event.currentTarget.hash, event);
 		}
 	}, {
 		key: 'runHashAction',
@@ -2483,7 +2498,7 @@ var _class = function (_BaseTiming) {
 			}
 
 			var referrer = document.referrer.replace(/https?:\/\/(?:www\.)?/, ''),
-			    isInternal = 0 === referrer.indexOf(location.host);
+				isInternal = 0 === referrer.indexOf(location.host.replace('www.', ''));
 
 			if (isInternal) {
 				return -1 !== sources.indexOf('internal');
@@ -3944,8 +3959,8 @@ var galleryHandler = function (_elementorModules$fro) {
 				verticalGap: elementorFrontend.getDeviceSetting('desktop', settings, 'gap').size,
 				animationDuration: settings.content_animation_duration,
 				classesPrefix: 'e-gallery-',
-				breakpoints: breakPointSettings
-				//tags: '',
+				breakpoints: breakPointSettings,
+				rtl: elementorFrontend.config.is_rtl
 			};
 		}
 	}, {
@@ -5724,19 +5739,7 @@ var SlidesHandler = elementorModules.frontend.handlers.Base.extend({
 			effect: elementSettings.transition,
 			on: {
 				slideChange: function slideChange() {
-					if (_this.$activeImageBg) {
-						_this.$activeImageBg.removeClass(settings.classes.kenBurnsActive);
-					}
-
-					_this.activeItemIndex = _this.swipers.main ? _this.swipers.main.activeIndex : _this.getInitialSlide();
-
-					if (!_this.swipers.main) {
-						_this.$activeImageBg = jQuery(_this.elements.$mainSwiperSlides[0]).children(settings.selectors.slideBackground);
-					} else {
-						_this.$activeImageBg = jQuery(_this.swipers.main.slides[_this.activeItemIndex]).children(settings.selectors.slideBackground);
-					}
-
-					_this.$activeImageBg.addClass(settings.classes.kenBurnsActive);
+					_this.handleKenBurns();
 				}
 			}
 		};
@@ -5762,7 +5765,7 @@ var SlidesHandler = elementorModules.frontend.handlers.Base.extend({
 		if (!this.isEdit && elementSettings.autoplay) {
 			swiperOptions.autoplay = {
 				delay: elementSettings.autoplay_speed,
-				disableOnInteraction: !!elementSettings.pause_on_hover
+				disableOnInteraction: !!elementSettings.pause_on_interaction
 			};
 		}
 
@@ -5777,9 +5780,30 @@ var SlidesHandler = elementorModules.frontend.handlers.Base.extend({
 		return swiperOptions;
 	},
 
+	handleKenBurns: function handleKenBurns() {
+		var settings = this.getSettings();
+
+		if (this.$activeImageBg) {
+			this.$activeImageBg.removeClass(settings.classes.kenBurnsActive);
+		}
+
+		this.activeItemIndex = this.swipers.main ? this.swipers.main.activeIndex : this.getInitialSlide();
+
+		if (this.swipers.main) {
+			this.$activeImageBg = jQuery(this.swipers.main.slides[this.activeItemIndex]).children(settings.selectors.slideBackground);
+		} else {
+			this.$activeImageBg = jQuery(this.elements.$mainSwiperSlides[0]).children(settings.selectors.slideBackground);
+		}
+
+		this.$activeImageBg.addClass(settings.classes.kenBurnsActive);
+	},
+
 	initSlider: function initSlider() {
+		var _this2 = this;
+
 		var $slider = this.elements.$slider,
 		    settings = this.getSettings(),
+		    elementSettings = this.getElementSettings(),
 		    animation = $slider.data(settings.attributes.dataAnimation);
 
 		if (!$slider.length) {

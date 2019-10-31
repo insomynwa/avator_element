@@ -3,7 +3,7 @@
  * Plugin Name: Avator Element
  * Description: Elementor add-on plugin
  * Author: Mr.Lorem
- * Version: 2.7.2
+ * Version: 2.7.3
  *
  * Text Domain: avator-element
  */
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'AVATOR_ELEMENT_VERSION', '2.7.2' );
+define( 'AVATOR_ELEMENT_VERSION', '2.7.3' );
 define( 'AVATOR_ELEMENT_PREVIOUS_STABLE_VERSION', '2.6.5' );
 
 define( 'AVATOR_ELEMENT__FILE__', __FILE__ );
